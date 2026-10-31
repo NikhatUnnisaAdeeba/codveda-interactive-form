@@ -1,142 +1,160 @@
+/* Basic Reset */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* Body */
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f2ff;
-  color: #25213b;
-  line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background: #f5f2ff;
+    color: #25213b;
+    line-height: 1.6;
 }
 
+/* Form Container */
 .form-container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 16px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 16px;
 }
 
+/* Form Card */
 .form-card {
-  background: white;
-  width: 100%;
-  max-width: 440px;
-  padding: 35px;
-  border-radius: 18px;
-  box-shadow: 0 12px 35px rgba(50, 35, 100, 0.10);
+    background: white;
+    width: 100%;
+    max-width: 440px;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(50, 35, 100, 0.10);
 }
 
+/* Logo */
 .logo {
-  display: inline-block;
-  color: #25213b;
-  font-size: 27px;
-  font-weight: bold;
-  text-decoration: none;
-  margin-bottom: 22px;
+    display: inline-block;
+    color: #25213b;
+    font-size: 27px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 22px;
 }
 
 .logo span {
-  color: #7655e8;
+    color: #7655e8;
 }
 
+/* Headings */
 h1 {
-  font-size: 27px;
-  margin-bottom: 8px;
+    font-size: 27px;
+    margin-bottom: 8px;
 }
 
 .subtitle {
-  color: #777389;
-  font-size: 14px;
-  margin-bottom: 25px;
+    color: #777389;
+    font-size: 14px;
+    margin-bottom: 25px;
 }
 
+/* Form Fields */
 .form-group {
-  margin-bottom: 18px;
+    margin-bottom: 18px;
 }
 
 label {
-  display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 7px;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
 }
 
 input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #dcd8e9;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcd8e9;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
 }
 
-input:focus {
-  border-color: #7655e8;
-  box-shadow: 0 0 0 3px rgba(118, 85, 232, 0.12);
+/* Input Focus */
+input:focus,
+input.focused {
+    border-color: #7655e8;
+    box-shadow: 0 0 0 3px rgba(118, 85, 232, 0.12);
 }
 
+/* Invalid Input */
 input.invalid {
-  border-color: #d93650;
+    border-color: #d93650;
 }
 
+/* Error Messages */
 .error {
-  display: block;
-  color: #d93650;
-  font-size: 12px;
-  margin-top: 5px;
+    display: block;
+    color: #d93650;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
+/* Submit Button */
 .submit-btn {
-  width: 100%;
-  padding: 13px;
-  background: #7655e8;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
+    width: 100%;
+    padding: 13px;
+    background: #7655e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
 }
 
 .submit-btn:hover {
-  background: #5c3ec8;
+    background: #5c3ec8;
 }
 
 .submit-btn:focus-visible {
-  outline: 3px solid #b7a6ff;
-  outline-offset: 3px;
+    outline: 3px solid #b7a6ff;
+    outline-offset: 3px;
 }
 
+/* Form Message */
 #formMessage {
-  margin-top: 15px;
-  font-size: 14px;
-  text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
 }
 
 #formMessage.success {
-  color: #21834a;
+    color: #21834a;
 }
 
 #formMessage.failure {
-  color: #d93650;
+    color: #d93650;
 }
 
+/* Bottom Text */
 .bottom-text {
-  color: #777389;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 25px;
+    color: #777389;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 25px;
 }
 
+/* Mobile Responsive Design */
 @media (max-width: 480px) {
-  .form-card {
-    padding: 25px 20px;
-  }
 
-  h1 {
-    font-size: 24px;
-  }
+    .form-card {
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
 }
