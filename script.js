@@ -1,84 +1,188 @@
+// Select the form and input fields
 const form = document.getElementById("signupForm");
 
 const fullName = document.getElementById("fullName");
 const email = document.getElementById("email");
+const phone = document.getElementById("phone");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 
-const nameError = document.getElementById("nameError");
-const emailError = document.getElementById("emailError");
-const passwordError = document.getElementById("passwordError");
-const confirmError = document.getElementById("confirmError");
-
 const formMessage = document.getElementById("formMessage");
 
+// Select all input fields
+const inputs = form.querySelectorAll("input");
+
+// Validate each input field
+function validateField(input) {
+
+    let errorMessage = "";
+    const value = input.value.trim();
+
+    // Check full name
+    if (input.id === "fullName") {
+
+        if (value === "") {
+            errorMessage = "Please enter your name.";
+        }
+
+    }
+
+    // Check email format
+    else if (input.id === "email") {
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (value === "") {
+            errorMessage = "Please enter your email address.";
+        }
+        else if (!emailPattern.test(value)) {
+            errorMessage = "Please enter a valid email address.";
+        }
+
+    }
+
+    // Check phone number
+    else if (input.id === "phone") {
+
+        const phonePattern = /^[0-9]{10}$/;
+
+        if (value === "") {
+            errorMessage = "Please enter your phone number.";
+        }
+        else if (!phonePattern.test(value)) {
+            errorMessage = "Please enter a valid 10 digit phone number.";
+        }
+
+    }
+
+    // Check password strength
+    else if (input.id === "password") {
+
+        const passwordPattern =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/;
+
+        if (input.value === "") {
+            errorMessage = "Please enter a password.";
+        }
+        else if (!passwordPattern.test(input.value)) {
+            errorMessage =
+                "Use 8 characters, uppercase, lowercase, number and special character.";
+        }
+
+    }
+
+    // Check confirm password
+    else if (input.id === "confirmPassword") {
+
+        if (input.value === "") {
+            errorMessage = "Please confirm your password.";
+        }
+        else if (input.value !== password.value) {
+            errorMessage = "Passwords do not match.";
+        }
+
+    }
+
+    // Display error message
+    const errorElement = document.getElementById(input.id + "Error");
+
+    errorElement.textContent = errorMessage;
+
+    // Add or remove error border
+    if (errorMessage !== "") {
+        input.classList.add("invalid");
+    }
+    else {
+        input.classList.remove("invalid");
+    }
+
+    return errorMessage === "";
+
+}
+
+// Focus and blur events
+inputs.forEach(function (input) {
+
+    // Focus event
+    input.addEventListener("focus", function () {
+
+        input.classList.add("focused");
+
+    });
+
+    // Blur event
+    input.addEventListener("blur", function () {
+
+        input.classList.remove("focused");
+
+        validateField(input);
+
+    });
+
+    // Real-time validation while typing
+    input.addEventListener("input", function () {
+
+        validateField(input);
+
+        formMessage.textContent = "";
+        formMessage.className = "";
+
+        // Check confirm password again if password changes
+        if (input.id === "password" && confirmPassword.value !== "") {
+            validateField(confirmPassword);
+        }
+
+    });
+
+});
+
+// Form submission
 form.addEventListener("submit", function (event) {
-  // Stop the form from refreshing the page.
-  event.preventDefault();
 
-  // Clear old error messages.
-  nameError.textContent = "";
-  emailError.textContent = "";
-  passwordError.textContent = "";
-  confirmError.textContent = "";
+    // Stop the page from refreshing
+    event.preventDefault();
 
-  formMessage.textContent = "";
-  formMessage.className = "";
+    let isValid = true;
 
-  // Remove old error borders.
-  const inputs = form.querySelectorAll("input");
+    // Validate all input fields
+    inputs.forEach(function (input) {
 
-  inputs.forEach(function (input) {
-    input.classList.remove("invalid");
-  });
+        if (!validateField(input)) {
+            isValid = false;
+        }
 
-  let isValid = true;
+    });
 
-  // Check the full name.
-  if (fullName.value.trim() === "") {
-    nameError.textContent = "Please enter your name.";
-    fullName.classList.add("invalid");
-    isValid = false;
-  }
+    // Show successful submission message
+    if (isValid) {
 
-  // Check the email format.
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        formMessage.textContent =
+            "Account created successfully! This is a demo.";
 
-  if (!emailPattern.test(email.value.trim())) {
-    emailError.textContent = "Please enter a valid email address.";
-    email.classList.add("invalid");
-    isValid = false;
-  }
+        formMessage.className = "success";
 
-  // Check the password length.
-  if (password.value.length < 8) {
-    passwordError.textContent =
-      "Password must contain at least 8 characters.";
+        // Clear the form
+        form.reset();
 
-    password.classList.add("invalid");
-    isValid = false;
-  }
+        // Remove old error messages and borders
+        inputs.forEach(function (input) {
 
-  // Check whether both passwords match.
-  if (confirmPassword.value !== password.value ||
-      confirmPassword.value === "") {
-    confirmError.textContent = "Passwords do not match.";
-    confirmPassword.classList.add("invalid");
-    isValid = false;
-  }
+            input.classList.remove("invalid", "focused");
 
-  // Show the final result.
-  if (isValid) {
-    formMessage.textContent =
-      "Form submitted successfully! This is a demo.";
+            document.getElementById(input.id + "Error").textContent = "";
 
-    formMessage.classList.add("success");
+        });
 
-    form.reset();
-  } else {
-    formMessage.textContent =
-      "Please correct the errors above.";
+    }
 
-    formMessage.classList.add("failure");
-  }
+    // Show error message
+    else {
+
+        formMessage.textContent =
+            "Please correct the errors above.";
+
+        formMessage.className = "failure";
+
+    }
+
 });
