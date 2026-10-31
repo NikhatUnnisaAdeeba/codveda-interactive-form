@@ -4,49 +4,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Create your Nexora account.">
+
     <title>Create Account | Nexora</title>
+
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
+
     <main class="form-container">
+
         <div class="form-card">
-            <a href="#" class="logo">nexora.<span>.</span></a>
+
+            <a href="#" class="logo">nexora<span>.</span></a>
+
             <h1>Create your account</h1>
-            <p class="subtitle">Fill in your details to get started</p>
-            <form id="signupForm" no validate>
+
+            <p class="subtitle">
+                Fill in your details to get started
+            </p>
+
+            <form id="signupForm" novalidate>
+
+                <!-- Full Name -->
                 <div class="form-group">
-                    <label for="fullName"> Full name</label>
-                    <input type="text" id="fullName" placeholder="Enter your full name" autocomplete="name" required>
-                    <small class="error" id="nameError"></small>
+
+                    <label for="fullName">Full name</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter your full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                    <small class="error" id="fullNameError"></small>
+
                 </div>
 
+                <!-- Email -->
                 <div class="form-group">
+
                     <label for="email">Email address</label>
-                    <input type="text" id="email" placeholder="you@email.com" autocomplete="email" required>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="you@email.com"
+                        autocomplete="email"
+                        required
+                    >
+
                     <small class="error" id="emailError"></small>
 
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Atleast 8 characters"
-                            autocomplete="new-password" required>
-                        <small class="error" id="passwordError"></small>
+                </div>
 
-                        <div class="form-group">
-                            <label for="confirmPassword">Confirm password</label>
-                            <input type="password" id="confirmPassword" placeholder="Enter your password again"
-                                autocomplete="new-password" required>
-                            <small class="error" id="confirmError"></small>
-                        </div>
-                        <button type="submit" class="submit-btn">Create account </button>
-                        <p id="formMessage" role="status" aria-live="polite"></p>
+                <!-- Phone Number -->
+                <div class="form-group">
+
+                    <label for="phone">Phone number</label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter 10 digit phone number"
+                        autocomplete="tel"
+                        inputmode="numeric"
+                        required
+                    >
+
+                    <small class="error" id="phoneError"></small>
+
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <small class="error" id="passwordError"></small>
+
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+
+                    <label for="confirmPassword">Confirm password</label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Enter your password again"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                    <small class="error" id="confirmPasswordError"></small>
+
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Create account
+                </button>
+
+                <p id="formMessage" role="status" aria-live="polite"></p>
+
             </form>
-         <p class="bottom-text">
-        Built as a beginner web development project.
-      </p>    
-</div>
-     </main>
-     
+
+            <p class="bottom-text">
+                Built as a beginner web development project.
+            </p>
+
+        </div>
+
+    </main>
+
 </body>
 </html>
